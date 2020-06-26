@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test')->middleware(CheckAge::class);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
