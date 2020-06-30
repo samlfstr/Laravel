@@ -1024,6 +1024,7 @@ return array(
     'Highlight\\RegExMatch' => $vendorDir . '/scrivo/highlight.php/Highlight/RegExMatch.php',
     'Highlight\\RegExUtils' => $vendorDir . '/scrivo/highlight.php/Highlight/RegExUtils.php',
     'Highlight\\Terminators' => $vendorDir . '/scrivo/highlight.php/Highlight/Terminators.php',
+    'HotelSeeder' => $baseDir . '/database/seeds/HotelSeeder.php',
     'Illuminate\\Auth\\Access\\AuthorizationException' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
     'Illuminate\\Auth\\Access\\Gate' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
     'Illuminate\\Auth\\Access\\HandlesAuthorization' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
