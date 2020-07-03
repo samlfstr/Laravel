@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckAge;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test')->middleware(CheckAge::class);
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get("/hello", function(){
+    return "Hello world";
+});
+
+Route::get('/rooms','ShowRoomsController');
