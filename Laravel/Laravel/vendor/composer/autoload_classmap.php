@@ -35,7 +35,6 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\TestFaker' => $baseDir . '/app/TestFaker.php',
-    'App\\TestPerso' => $baseDir . '/app/TestPerso.php',
     'App\\TestPerson' => $baseDir . '/app/TestPerson.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

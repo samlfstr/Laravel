@@ -17,7 +17,8 @@ class ShowRoomsController extends Controller
             $rooms = $rooms ->where('room_type_id', $request->query('id'));
         }
         // we are sending the data to the views/rooms/index.blade.php file and use there
-        return view('rooms.index',['rooms'=>$rooms]);
+        // return view('rooms.index',['roomz'=>$rooms]);
+        return view('rooms.index')->with('roomz',$rooms);
 
     }
 }

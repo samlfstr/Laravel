@@ -5,23 +5,24 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        \DB::table('bookings')->get()->dd();
+        $bookings = DB::table( 'bookings')->get();
+        return view('bookings.index')->with('bookingz',$bookings);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,7 +33,7 @@ class BookingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -43,7 +44,7 @@ class BookingController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Booking $booking)
     {
@@ -54,7 +55,7 @@ class BookingController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Booking $booking)
     {
@@ -66,7 +67,7 @@ class BookingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Booking $booking)
     {
@@ -77,7 +78,7 @@ class BookingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Booking  $booking
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Booking $booking)
     {

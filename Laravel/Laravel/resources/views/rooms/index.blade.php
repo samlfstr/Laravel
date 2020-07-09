@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+    {{-- Simple Explination --
+    Tr => Table Raw
+    Th => Table Head It Is Horizontal
+    Td => Table Data It goes from left to righ.
+     --}}
     <table class="table">
         <thead>
         <tr>
@@ -14,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($rooms as $room)
+        @foreach($roomz as $room)
             <tr>
                 <td>{{$room->number}}</td>
                 <td>{{$room->room_type_id}}</td>
