@@ -22,8 +22,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// This is how to use routes without controller
 Route::get("/hello", function(){
     return "Hello world";
 });
-
+// This is how do we use route with controller
 Route::get('/rooms','ShowRoomsController');
+
+Route::resource('bookings','BookingController');

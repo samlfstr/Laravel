@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShowRoomsController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return response('A listing of rooms',200);
+        $rooms = DB::table('rooms')->get();
+
+        // if I want to return specific values
+        if($request->query('id') !== null){
+            $rooms = $rooms ->where('room_type_id', $request->query('id'));
+        }
+        // we are sending the data to the views/rooms/index.blade.php file and use there
+        return view('rooms.index',['rooms'=>$rooms]);
+
     }
 }
