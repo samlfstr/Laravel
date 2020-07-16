@@ -29,4 +29,5 @@ Route::get("/hello", function(){
 // This is how do we use route with controller
 Route::get('/rooms','ShowRoomsController');
 
+// Bookings here is the url actually
 Route::resource('bookings','BookingController');
