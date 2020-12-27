@@ -12,13 +12,13 @@ class ShowRoomsController extends Controller
     {
         $rooms = DB::table('rooms')->get();
 
-        // if I want to return specific values
-        if($request->query('id') !== null){
-            $rooms = $rooms ->where('room_type_id', $request->query('id'));
+        // if I want to return specific values ?id= this is the syntax
+        if ($request->query('id') !== null) {
+            $rooms = $rooms->where('room_type_id', $request->query('id'));
         }
         // we are sending the data to the views/rooms/index.blade.php file and use there
         // return view('rooms.index',['roomz'=>$rooms]);
-        return view('rooms.index')->with('roomz',$rooms);
+        return view('rooms.index')->with('roomz', $rooms);
 
     }
 }

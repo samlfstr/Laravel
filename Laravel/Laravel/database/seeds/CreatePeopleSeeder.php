@@ -15,7 +15,7 @@ class CreatePeopleSeeder extends Seeder
     {
         $faker = Faker::create('App\TestPerson');
 
-        for($i=0; $i < 10; $i++){
+        for ($i = 0; $i < 10; $i++) {
 
             DB::table('test_people')->insert([
                 'name' => $faker->name,

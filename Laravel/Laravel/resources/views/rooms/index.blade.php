@@ -9,12 +9,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th>
-                Row Number
-            </th>
-            <th>
-                Type
-            </th>
+            <th> Row Number</th>
+            <th> Type</th>
         </tr>
         </thead>
         <tbody>

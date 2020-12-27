@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use voku\helper\ASCII;
 
 class BookingController extends Controller
 {
@@ -19,8 +20,14 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = DB::table( 'bookings')->get();
-        return view('bookings.index')->with('bookingz',$bookings);
+
+        // This is called eloquent model
+        $bookings = Booking::all();
+
+        // This one uses facades
+        //  $bookings = DB::table('bookings')->get();
+
+        return view('bookings.index')->with('bookingz', $bookings);
     }
 
     /**
@@ -28,11 +35,14 @@ class BookingController extends Controller
      */
     public function create()
     {
-        $users = DB::table('users')->get()->pluck('name','id');
-        $rooms = DB::table('rooms')->get()->pluck('number','id');
+        $users = DB::table('users')->get()->pluck('name', 'id');
+
+        $rooms = DB::table('rooms')->get()->pluck('number', 'id');
+
+        // Send two tables to the view.
         return view('bookings.create')
-            ->with('users',$users)
-            ->with('rooms',$rooms);
+            ->with('users', $users)
+            ->with('rooms', $rooms);
     }
 
     /**
@@ -49,7 +59,6 @@ class BookingController extends Controller
             'is_reservation' => $request->input('is_reservation', false),
             'is_paid' => $request->input('is_paid', false),
             'notes' => $request->input('notes'),
-
         ]);
         DB::table('bookings_users')->insert([
             'booking_id' => $id,
@@ -59,33 +68,35 @@ class BookingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param Booking $booking
-     * @return Response
+     * @return Application|Factory|View
      */
     public function show(Booking $booking)
     {
-        //
+        //dd($booking::all());
+        return view('bookings.show') ->with('booking',$booking);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param Booking $booking
-     * @return Response
+     * @return Application|Factory|View
      */
     public function edit(Booking $booking)
     {
-        //
+        $users = DB::table('users')->get()->pluck('name', 'id');
+
+        $rooms = DB::table('rooms')->get()->pluck('number', 'id');
+
+        // Send two tables to the view.
+        return view('bookings.edit')
+            ->with('users', $users)
+            ->with('rooms', $rooms)
+            ->with('booking',$booking);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
      * @param Booking $booking
-     * @return Response
      */
     public function update(Request $request, Booking $booking)
     {
@@ -93,10 +104,7 @@ class BookingController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param Booking $booking
-     * @return Response
      */
     public function destroy(Booking $booking)
     {
